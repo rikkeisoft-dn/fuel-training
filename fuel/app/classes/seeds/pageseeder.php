@@ -21,8 +21,8 @@ class PageSeeder
         // Adds the page, using ORM Model defined for the project:
         try {
 
-            Auth::create_user('admin', '123456', 'daidv@rikkeisoft.com', 100);
-			Auth::create_user('daidv', '123456', 'daidv@rikkeisoft.com', 100);
+            \Auth::create_user('admin', '123456', 'admin@rikkeisoft.com', 100);
+			\Auth::create_user('daidv', '123456', 'daidv@rikkeisoft.com', 100);
 
             // Prints this message on terminal
             echo "\nuser";
