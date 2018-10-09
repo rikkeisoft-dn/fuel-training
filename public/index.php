@@ -86,6 +86,9 @@ $routerequest = function($request = null, $e = false)
 	return $response;
 };
 
+//定数定義ファイル読み込み
+require DOCROOT.'const.php';
+
 // Generate the request, execute it and send the output.
 try
 {

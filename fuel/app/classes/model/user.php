@@ -62,7 +62,15 @@ class Model_User extends \Orm\Model
 
 	protected static $_primary_key = array('id');
 
-	protected static $_has_many = array();
+	protected static $_has_many = array(
+		'posts' => array(
+			'key_from'       => 'id',
+			'model_to'       => 'Model_Post',
+			'key_to'         => 'user_id',
+			'cascade_save'   => true,
+			'cascade_delete' => true,
+		)
+	);
 
 	protected static $_many_many = array();
 

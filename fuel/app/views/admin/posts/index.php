@@ -8,7 +8,7 @@
 			<th>Slug</th>
 			<th>Summary</th>
 			<th>Body</th>
-			<th>User id</th>
+			<th>User name</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -19,7 +19,7 @@
 			<td><?php echo $item->slug; ?></td>
 			<td><?php echo $item->summary; ?></td>
 			<td><?php echo $item->body; ?></td>
-			<td><?php echo $item->user_id; ?></td>
+			<td><?php echo $item->user->username; ?></td>
 			<td>
 				<?php echo Html::anchor('admin/posts/view/'.$item->id, 'View'); ?> |
 				<?php echo Html::anchor('admin/posts/edit/'.$item->id, 'Edit'); ?> |

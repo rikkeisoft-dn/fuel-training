@@ -2,13 +2,8 @@
 
 	<fieldset>
 		<div class="form-group">
-			<?php echo Form::label('Title', 'title', array('class'=>'control-label')); ?>
+			<?php echo Form::label('Title <span class="text-danger">*</span>', 'title', array('class'=>'control-label')); ?>
 			<?php echo Form::input('title', Input::post('title', isset($post) ? $post->title : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Title')); ?>
-
-		</div>
-		<div class="form-group">
-			<?php echo Form::label('Slug', 'slug', array('class'=>'control-label')); ?>
-			<?php echo Form::input('slug', Input::post('slug', isset($post) ? $post->slug : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Slug')); ?>
 
 		</div>
 		<div class="form-group">
@@ -22,8 +17,8 @@
 
 		</div>
 		<div class="form-group">
-			<?php echo Form::label('User id', 'user_id', array('class'=>'control-label')); ?>
-			<?php echo Form::input('user_id', Input::post('user_id', isset($post) ? $post->user_id : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'User id')); ?>
+			<?php echo Form::label('User name', 'user_id', array('class'=>'control-label')); ?>
+			<?php echo Form::select('user_id', Input::post('user_id', isset($post) ? $post->user_id : $current_user->id), $users, array('class' => 'col-md-4 form-control')); ?>
 
 		</div>
 		<div class="form-group">

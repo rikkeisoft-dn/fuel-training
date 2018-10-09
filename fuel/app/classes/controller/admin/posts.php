@@ -36,7 +36,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			{
 				$post = Model_Post::forge(array(
 					'title'   => Input::post('title'),
-					'slug'    => Input::post('slug'),
+					'slug'    => str_slug(Input::post('title')),
 					'summary' => Input::post('summary'),
 					'body'    => Input::post('body'),
 					'user_id' => Input::post('user_id'),
@@ -60,6 +60,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			}
 		}
 
+		$this->template->set_global('users', Arr::pluck(Model_User::find('all'), 'username', 'id'));
 		$this->template->title   = "Posts";
 		$this->template->content = View::forge('admin/posts/create');
 	}
@@ -72,7 +73,7 @@ class Controller_Admin_Posts extends Controller_Admin
 		if($val->run())
 		{
 			$post->title   = Input::post('title');
-			$post->slug    = Input::post('slug');
+			$post->slug    = str_slug(Input::post('title'));
 			$post->summary = Input::post('summary');
 			$post->body    = Input::post('body');
 			$post->user_id = Input::post('user_id');
@@ -106,6 +107,7 @@ class Controller_Admin_Posts extends Controller_Admin
 			$this->template->set_global('post', $post, false);
 		}
 
+		$this->template->set_global('users', Arr::pluck(Model_User::find('all'), 'username', 'id'), false);
 		$this->template->title   = "Posts";
 		$this->template->content = View::forge('admin/posts/edit');
 	}
