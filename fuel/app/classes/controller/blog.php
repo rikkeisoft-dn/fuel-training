@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Blog extends \Fuel\Core\Controller_Template
+class Controller_Blog extends Controller_Base
 {
 	public $template = 'blog/template';
 
@@ -22,5 +22,43 @@ class Controller_Blog extends \Fuel\Core\Controller_Template
 		$this->template->content = View::forge('blog/view', array(
 			'post' => $post,
 		));
+	}
+
+	public function action_comment($slug)
+	{
+		$post = Model_Post::find_by_slug($slug);
+
+		// Lazy validation
+		if(Input::post('name') AND Input::post('email') AND Input::post('message'))
+		{
+			// Create a new comment
+			$post->comments[] = new Model_Comment(array(
+				'name'    => Input::post('name'),
+				'website' => Input::post('website'),
+				'email'   => Input::post('email'),
+				'message' => Input::post('message'),
+				'user_id' => @$this->current_user->id,
+			));
+
+			// Save the post and the comment will save too
+			if($post->save())
+			{
+				$comment = end($post->comments);
+				Session::set_flash('success', 'Added comment success.');
+			}
+			else
+			{
+				Session::set_flash('error', 'Could not save comment.');
+			}
+
+			Response::redirect('blog/view/'.$slug);
+		}
+
+		// Did not have all the fields
+		else
+		{
+			// Just show the view again until they get it right
+			$this->action_view($slug);
+		}
 	}
 }

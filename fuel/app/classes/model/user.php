@@ -69,6 +69,13 @@ class Model_User extends \Orm\Model
 			'key_to'         => 'user_id',
 			'cascade_save'   => true,
 			'cascade_delete' => true,
+		),
+		'comments' => array(
+			'key_from'       => 'id',
+			'model_to'       => 'Model_Comment',
+			'key_to'         => 'user_id',
+			'cascade_save'   => true,
+			'cascade_delete' => true,
 		)
 	);
 
