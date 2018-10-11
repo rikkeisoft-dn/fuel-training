@@ -16,6 +16,8 @@ require COREPATH.'bootstrap.php';
 \Autoloader::add_classes(array(
 	// Add classes you want to override here
 	// Example: 'View' => APPPATH.'classes/view.php',
+    // Edit `\fuel\packages\parser\classes\view\smarty.php`, replace `new Smarty();` with new `SmartyBC();`
+    'SmartyBC' => VENDORPATH . 'smarty' . DS . 'smarty' . DS . 'libs' . DS . 'SmartyBC.class.php',
 ));
 
 // Register the autoloader
