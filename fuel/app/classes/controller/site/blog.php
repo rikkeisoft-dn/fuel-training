@@ -4,7 +4,7 @@ class Controller_Site_Blog extends Controller_Site_Base
 {
 	public function action_index()
 	{
-		$view = \Parser\View::forge('site/blog/index');
+		$view = \Parser\View_Smarty::forge('site/blog/index.tpl');
 		$view->posts = Model_Post::find('all');
 
 		$this->template->title   = 'My Blog';
@@ -16,7 +16,7 @@ class Controller_Site_Blog extends Controller_Site_Base
 		$post = Model_Post::find_by_slug($slug, array('related' => array('user')));
 
 		$this->template->title   = $post->title;
-		$this->template->content = View::forge('site/blog/view', array(
+		$this->template->content = \Parser\View_Smarty::forge('site/blog/view.tpl', array(
 			'post' => $post,
 		));
 	}
