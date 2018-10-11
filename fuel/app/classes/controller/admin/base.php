@@ -1,7 +1,12 @@
 <?php
 
-class Controller_Base extends Controller_Template
+class Controller_Admin_Base extends \Fuel\Core\Controller_Template
 {
+	/**
+     * @var string page template
+     */
+	public $template = 'admin/layouts/template';
+
 	public function before()
 	{
 		parent::before();
@@ -18,7 +23,7 @@ class Controller_Base extends Controller_Template
 		}
 
 		// Set a global variable so views can use it
-		View::set_global('current_user', $this->current_user);
+		$this->template->set_global('current_user', $this->current_user);
 	}
 
 }

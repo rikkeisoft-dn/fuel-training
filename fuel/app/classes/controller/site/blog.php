@@ -1,13 +1,10 @@
 <?php
 
-class Controller_Blog extends Controller_Base
+class Controller_Site_Blog extends Controller_Site_Base
 {
-	public $template = 'blog/template';
-
 	public function action_index()
 	{
-		$view = View::forge('blog/index');
-
+		$view = \Parser\View::forge('site/blog/index');
 		$view->posts = Model_Post::find('all');
 
 		$this->template->title   = 'My Blog';
@@ -19,7 +16,7 @@ class Controller_Blog extends Controller_Base
 		$post = Model_Post::find_by_slug($slug, array('related' => array('user')));
 
 		$this->template->title   = $post->title;
-		$this->template->content = View::forge('blog/view', array(
+		$this->template->content = View::forge('site/blog/view', array(
 			'post' => $post,
 		));
 	}

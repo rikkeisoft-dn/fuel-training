@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Admin_Comments extends Controller_Admin
+class Controller_Admin_Comments extends Controller_Admin_Base
 {
 
 	public function action_index()

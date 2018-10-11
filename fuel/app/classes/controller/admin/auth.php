@@ -1,14 +1,14 @@
 <?php
 
-class Controller_Admin extends Controller_Base
+class Controller_Admin_Auth extends Controller_Admin_Base
 {
-	public $template = 'admin/template';
+	public $template = 'admin/layouts/template';
 
 	public function before()
 	{
 		parent::before();
 
-		if(Request::active()->controller !== 'Controller_Admin' or !in_array(Request::active()->action, array(
+		if(Request::active()->controller !== 'Controller_Admin_Auth' or !in_array(Request::active()->action, array(
 				'login',
 				'logout'
 			))
