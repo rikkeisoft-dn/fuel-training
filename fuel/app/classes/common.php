@@ -21,7 +21,9 @@ function str_slug($str, $flag = true) {
 	$str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
 	$str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
 	$str = preg_replace("/(Đ)/", 'D', $str);
+	$str = preg_replace("/[^ \w]+/", "", $str);
 	$str = str_replace('　', ' ', $str);
+	$str = strtolower($str);
 
 	return ($flag) ? str_replace(' ', '-', $str) : $str;
 }
